@@ -5,6 +5,8 @@ import java.io.InputStream;
 import java.io.PipedInputStream;
 import java.io.PipedOutputStream;
 
+import de.dhbw.ka.se2.domain.logistics.VehicleDimensions;
+import de.dhbw.ka.se2.plugin.vehicledata.VehicleDataClient;
 import org.apache.hc.client5.http.fluent.Request;
 import org.apache.hc.client5.http.fluent.Response;
 
@@ -20,6 +22,7 @@ public class LogisticsClient {
 		VehicleConfigGenerator gen = new VehicleConfigGenerator();
 		VehicleConfiguration vehicle = gen.generateVehicle(false);
 		System.out.println(new LogisticsClient().getWeights(vehicle));
+
 	}
 
 	public VehicleWeights getWeights(final VehicleConfiguration vehicle) {
