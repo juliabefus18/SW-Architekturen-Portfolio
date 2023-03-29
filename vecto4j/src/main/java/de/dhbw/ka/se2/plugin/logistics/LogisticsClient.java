@@ -20,7 +20,6 @@ public class LogisticsClient {
 		VehicleConfigGenerator gen = new VehicleConfigGenerator();
 		VehicleConfiguration vehicle = gen.generateVehicle(false);
 		System.out.println(new LogisticsClient().getWeights(vehicle));
-		System.out.println("Test");
 	}
 
 	public VehicleWeights getWeights(final VehicleConfiguration vehicle) {
