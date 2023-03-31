@@ -4,8 +4,7 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import de.dhbw.ka.se2.application.print.VehicleConfigGenerator;
-import de.dhbw.ka.se2.domain.logistics.VehicleWeights;
-import de.dhbw.ka.se2.domain.print.VehicleConfiguration;
+import de.dhbw.ka.se2.domain.print.FullVehicle;
 import de.dhbw.ka.se2.domain.vehicledata.VehicleComponent;
 import org.apache.hc.client5.http.fluent.Request;
 import org.apache.hc.client5.http.fluent.Response;
@@ -19,10 +18,10 @@ import java.util.List;
 public class VehicleDataClient {
     public static void main (String[] args) {
         VehicleConfigGenerator gen = new VehicleConfigGenerator();
-        VehicleConfiguration vehicle = gen.generateVehicle(false);
+        FullVehicle vehicle = gen.generateVehicle(false);
         System.out.println(new VehicleDataClient().getVehicleComponent(vehicle));
     }
-    public List<VehicleComponent> getVehicleComponent(final VehicleConfiguration vehicle) {
+    public List<VehicleComponent> getVehicleComponent(final FullVehicle vehicle) {
         // Anfrage serialisieren
         ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.registerModule(new JavaTimeModule());

@@ -5,8 +5,6 @@ import java.io.InputStream;
 import java.io.PipedInputStream;
 import java.io.PipedOutputStream;
 
-import de.dhbw.ka.se2.domain.logistics.VehicleDimensions;
-import de.dhbw.ka.se2.plugin.vehicledata.VehicleDataClient;
 import org.apache.hc.client5.http.fluent.Request;
 import org.apache.hc.client5.http.fluent.Response;
 
@@ -14,15 +12,15 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 
 import de.dhbw.ka.se2.application.print.VehicleConfigGenerator;
+import de.dhbw.ka.se2.application.vecto.VehicleWeightsClient;
 import de.dhbw.ka.se2.domain.logistics.VehicleWeights;
 import de.dhbw.ka.se2.domain.print.VehicleConfiguration;
 
-public class LogisticsClient {
+public class LogisticsClient implements VehicleWeightsClient {
 	public static void main(String[] args) {
 		VehicleConfigGenerator gen = new VehicleConfigGenerator();
-		VehicleConfiguration vehicle = gen.generateVehicle(false);
+		VehicleConfiguration vehicle = gen.generateVehicle(false).getConfig();
 		System.out.println(new LogisticsClient().getWeights(vehicle));
-
 	}
 
 	public VehicleWeights getWeights(final VehicleConfiguration vehicle) {

@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.time.LocalDate;
 
 public class VehicleComponent implements Serializable {
+	private static final long serialVersionUID = 6338783856494935380L;
 
 	private int id;
 	private ComponentType type;
